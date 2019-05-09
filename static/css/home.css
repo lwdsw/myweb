@@ -1,0 +1,88 @@
+﻿/*
+
+@Name：不落阁整站模板源码 
+@Author：Absolutely 
+@Site：http://www.lyblogs.cn
+
+*/
+
+/*博主信息*/
+.blogerinfo,
+.widget {
+    text-align: center;
+    padding: 0 15px;
+    background: #fff;
+    margin-bottom: 15px;
+}
+
+.blogerinfo-figure {
+    display: inline-block;
+    float: left;
+    margin-right:25px;
+}
+
+    .blogerinfo-figure img {
+        border-radius: 50%;
+    }
+
+.blogerinfo-base {
+    display: inline-block;
+    float: left;
+    text-align: left;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.blogerinfo-nickname {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.blogerinfo-introduce {
+    font-size: 15px;
+    width: 100%;
+}
+
+.blogerinfo-location {
+    margin:5px 0;
+    color: #808080;
+}
+
+.blogerinfo-info
+ {
+    padding: 15px;
+    padding-top: 10px;
+    min-height: 70px;
+}
+
+
+.blogerinfo-contact
+ {
+    padding: 15px;
+    padding-top: 5px;
+}
+
+    .blogerinfo-contact > a
+     {
+        padding: 0 10px;
+    }
+/*博主信息END*/
+
+/*友情链接*/
+.blogroll > li {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 2px 5px;
+}
+/*友情链接END*/
+
+/*一路走来和后台记录*/
+.footprint > dt {
+    color: #01AAED;
+}
+
+.footprint > dd {
+    text-indent: 1.3em;
+    padding: 2px 0;
+}
+/*一路走来和后台记录END*/

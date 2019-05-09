@@ -1,0 +1,75 @@
+body {
+	background-color: white;
+	color: #D5D6E2;
+	font-weight: 500;
+	font-size: 1.05em;
+	font-family: "Microsoft YaHei", "Segoe UI", "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+	color: rgba(255, 255, 255, 0.6);
+	outline: none;
+	text-decoration: none;
+	-webkit-transition: 0.2s;
+	transition: 0.2s;
+}
+
+a:hover,
+a:focus {
+	color: #74777b;
+	text-decoration: none;
+}
+
+.htmleaf-container {
+	margin: 0 auto;
+}
+
+#trans3DDemo1 {
+	position: relative;
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	top: 0px;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+#trans3DBoxes1 div {
+	position: absolute;
+	width: 148px;
+	line-height: 148px;
+	height: 148px;
+	padding: 0;
+	margin: 0;
+	border: 1px solid rgba(255, 255, 255, .2);
+	display: block;
+	text-align: center;
+	font-size: 36px;
+	font-weight: bold;
+}
+
+.a1 {
+	background: url("../images/bg.png");
+}
+
+.a2 {
+	background: url("../images/bg2.png");
+}
+
+.a3 {
+	background: url("../images/bg3.png");
+}
+
+.a4 {
+	background: url("../images/bg4.png");
+}
+
+.a5 {
+	background: url("../images/bg5.png");
+}
+
+.a6 {
+	background: url("../images/bg6.png");
+}
