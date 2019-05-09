@@ -1,0 +1,14 @@
+# pycharm
+.idea/
+
+# 环境
+venv/
+
+# 测试
+tests/
+
+# 其他
+myweb.exe
+
+
+
