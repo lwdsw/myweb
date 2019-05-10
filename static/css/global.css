@@ -82,7 +82,7 @@ body {
     }
 
         .blog-main > .blog-main-right > .blog-module:nth-child(odd) {
-            float: left;
+            float: right;
             clear: left;
         }
 
