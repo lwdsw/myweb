@@ -16,6 +16,7 @@
 </div>
 <form class="layui-form" action="/admin/save"  method="post" style="margin:20px">
     <input name="id" type="hidden" value="{{.post.Id}}">
+    <input name="create_date" type="hidden" value="{{.post.Created}}"/>
     <div class="layui-form-item">
         <label class="layui-form-label">类型</label>
         <div class="layui-input-block">
