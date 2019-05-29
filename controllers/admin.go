@@ -137,8 +137,7 @@ func (c *AdminController) Article() {
 		post := models.Post{Id:id}
 		c.o.Read(&post)
 		c.Data["post"] = post
-		c.Data["post_types"] = post.CategoryId
-		// fmt.Println(post.Types)
+		c.Data["post_types"] = post.CategoryId // 给select控件数据回显使用
 	}
 	c.Data["categorys"] = categorys
 	c.TplName = c.controllerName + "/_form.tpl"
@@ -186,7 +185,6 @@ func (c * AdminController) Save()  {
 	post.Updated = time.Now()
 
 	id ,_ := c.GetInt("id")
-	// fmt.Println(id)
 	if id == 0 {
 		if _, err := c.o.Insert(&post); err != nil {
 			c.History("新增博文失败！"+err.Error(), "")
