@@ -143,7 +143,7 @@ func (c *AdminController) Article() {
 	c.TplName = c.controllerName + "/_form.tpl"
 }
 
-//上传接口
+// 上传接口
 func (c *AdminController) Upload() {
 	f, h, err := c.GetFile("uploadname")
 	result := make(map[string]interface{})
@@ -168,7 +168,7 @@ func (c *AdminController) Upload() {
 	c.ServeJSON()
 }
 
-//保存
+// 创建、编辑
 func (c * AdminController) Save()  {
 	post := models.Post{}
 	post.UserId = 1
@@ -184,7 +184,7 @@ func (c * AdminController) Save()  {
 	post.Created = time.Now()
 	post.Updated = time.Now()
 
-	id ,_ := c.GetInt("id")
+	id ,_ := c.GetInt("id") // 取得URL上的参数，可能是
 	// 处理编辑状态 不更新创建时间
 	// 先获取原创建时间（存到了隐藏的控件里，类型是字符串），将其转化为时间类型
 	create_date := c.Input().Get("create_date")
@@ -205,17 +205,16 @@ func (c * AdminController) Save()  {
 			c.History("更新博文成功！", "/admin/index.html")
 		}
 	}
-}
-
+}// 删除
 func (c *AdminController) Delete() {
 	id, err := strconv.Atoi(c.Input().Get("id"));
 	if err != nil {
 		c.History("参数错误", "")
 	}else{
 		if _,err := c.o.Delete(&models.Post{Id:id}); err !=nil{
-			c.History("未能成功删除", "")
+			c.History("删除博文失败！", "")
 		}else {
-			c.History("删除成功", "/admin/index.html")
+			c.History("删除博文成功！", "/admin/index.html")
 		}
 	}
 }
