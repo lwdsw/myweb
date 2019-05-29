@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>个人客户列表</title>
     <link rel="stylesheet" href="/static/plug/layui/css/layui.css">
+    <link href="/static/plug/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 <body>
 <div class="layui-form" action="" style="margin: 5px; border: 1px silver">
@@ -33,13 +34,11 @@
             搜索
         </button>
     </div>
-
     <div class=" layui-inline" style="float: right">
         <button class="layui-btn " onclick="add()">
             <i class="layui-icon">&#xe608;</i> 添加
         </button>
     </div>
-
 </div>
 
 <table class="layui-table" lay-skin="row">
@@ -59,9 +58,7 @@
         <td>{{.Created}}</td>
         <td>
             {{if .IsTop}}
-            <i class="icon-arrow-up" title="置顶"> </i>
-            {{else}}
-                普通
+                <i class="fa fa-check" aria-hidden="true"></i>
             {{end}}
         </td>
         <td>

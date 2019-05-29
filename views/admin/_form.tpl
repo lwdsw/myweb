@@ -9,6 +9,11 @@
 </head>
 <body>
 <script type="text/javascript" src="/static/plug/layui/layui.js"></script>
+<div class=" layui-inline" style="float: right;margin-right: 10px;margin-top: -15px;">
+    <button class="layui-btn " onclick="back()">
+        <i class="layui-icon">&#xe60a;</i> 返回
+    </button>
+</div>
 <form class="layui-form" action="/admin/save"  method="post" style="margin:20px">
     <div class="layui-form-item">
         <label class="layui-form-label">类型</label>
@@ -43,7 +48,8 @@
         <label class="layui-form-label">是否置顶</label>
         <div class="layui-input-block">
             <input lay-filter="is_top" type="checkbox" name="is_top" {{if .post.IsTop}} checked {{end}} value="1" title="置顶" >
-            <input type="text" name="is_top_value" value="{{.post.IsTop}}" title="置首" >
+            <input type="text" name="is_top_value" value="{{.post.IsTop}}" title="置首"
+                style="display: none;" >
         </div>
     </div>
 
@@ -105,6 +111,10 @@
 </form>
 <script>
 
+    var back = function () {
+        location.href = "/admin/index.html"
+    }
+ 
     layui.use(['element', 'layer', 'form'], function () {
         var $ = layui.jquery;
         var form = layui.form();
@@ -116,12 +126,6 @@
             }
         });  
     });
-
-    //Demo
-    // layui.use('form', function(){
-
-
-    // });
 
     layui.use('upload', function(){
         layui.upload({

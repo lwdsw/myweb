@@ -22,8 +22,15 @@
         <div class="layui-input-block">
             <button class="layui-btn" lay-submit lay-filter="formDemo">提交</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            <button class="layui-btn " onclick="back()">返回</button>
+
         </div>
     </div>
 </form>
+<script>
+    var back = function () {
+        location.href = "/admin/category.html"
+    }
+</script>
 </body>
 </html>
