@@ -133,12 +133,12 @@ func (c *AdminController) Article() {
 	categorys := [] *models.Category{}
 	c.o.QueryTable(new(models.Category).TableName()).All(&categorys)
 	id, _ := c.GetInt("id")
-	fmt.Println(id)
 	if id != 0{
 		post := models.Post{Id:id}
 		c.o.Read(&post)
 		c.Data["post"] = post
-		// fmt.Println(post)
+		c.Data["post_types"] = post.CategoryId
+		// fmt.Println(post.Types)
 	}
 	c.Data["categorys"] = categorys
 	c.TplName = c.controllerName + "/_form.tpl"
@@ -186,18 +186,19 @@ func (c * AdminController) Save()  {
 	post.Updated = time.Now()
 
 	id ,_ := c.GetInt("id")
+	// fmt.Println(id)
 	if id == 0 {
 		if _, err := c.o.Insert(&post); err != nil {
-			c.History("插入数据错误"+err.Error(), "")
+			c.History("新增博文失败！"+err.Error(), "")
 		} else {
-			c.History("插入数据成功", "/admin/index.html")
+			c.History("新增博文成功！", "/admin/index.html")
 		}
 	}else {
 		post.Id = id
 		if _, err := c.o.Update(&post); err != nil {
-			c.History("更新数据出错"+err.Error(), "")
+			c.History("更新博文失败！"+err.Error(), "")
 		} else {
-			c.History("插入数据成功", "/admin/index.html")
+			c.History("更新博文成功！", "/admin/index.html")
 		}
 	}
 }

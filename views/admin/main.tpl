@@ -90,7 +90,7 @@
             { id: 7, pid: 1, node: '&nbsp;&nbsp;&nbsp;系统设置', url: '/admin/config.html' },
             { id: 2, pid: 0, node: '<span style=" font-size: 16px"><i class="layui-icon">&#xe63c;</i> 内容管理</span>', url: '#' },
             { id: 3, pid: 2, node: '&nbsp;&nbsp;&nbsp;分类管理', url: '/admin/category.html' },
-            { id: 5, pid: 2, node: '&nbsp;&nbsp;&nbsp;博文列表', url: '/admin/index.html' },
+            { id: 5, pid: 2, node: '&nbsp;&nbsp;&nbsp;博文管理', url: '/admin/index.html' },
             { id: 6, pid: 2, node: '&nbsp;&nbsp;&nbsp;博文添加', url: '/admin/article.html' },
         ], 0, 'id', 'pid', 'node', 'url');
         cms.bind(60 + 41 + 20 + 44); //头部高度 + 顶部切换卡标题高度 + 顶部切换卡内容padding + 底部高度

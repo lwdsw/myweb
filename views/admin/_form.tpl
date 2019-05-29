@@ -15,13 +15,14 @@
     </button>
 </div>
 <form class="layui-form" action="/admin/save"  method="post" style="margin:20px">
+    <input name="id" type="hidden" value="{{.post.Id}}">
     <div class="layui-form-item">
         <label class="layui-form-label">类型</label>
         <div class="layui-input-block">
             <input type="radio" name="types" value="1" 
-                title="博文"  {{if .post.Types}} {{else}} checked {{end}}>
+                title="博文"  {{if .post.Types}} checked {{end}}>
             <input type="radio" name="types" value="0" 
-                title="下载"  {{if .post.Types}} checked {{end}}>
+                title="下载"  {{if .post.Types}} {{else}} checked {{end}}>
         </div>
     </div>
 
@@ -36,10 +37,15 @@
         <label class="layui-form-label">类别</label>
         <div class="layui-input-block">
             <select name="cate_id" lay-verify="required">
-                <option value=""></option>
+                <!-- select控件数据回显的处理   -->
+                <!-- 在循环中获取控制器传递过来的数据，不能直接用. ,要用$. -->
                 {{range .categorys}}
-                <option value="{{.Id}}" >{{.Name}}</option>
-                {{end}}
+                    {{if compare .Id $.post_types}}
+                          <option value="{{.Id}}" selected="true">{{.Name}}</option>
+                    {{else}}
+                          <option value="{{.Id}}">{{.Name}}</option>
+                    {{end}}
+               {{end}}
             </select>
         </div>
     </div>
