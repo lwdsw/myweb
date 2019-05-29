@@ -61,7 +61,7 @@
 
     <!-- 底部 -->
     <div class="layui-footer" style="text-align: center; line-height: 44px;">
-        Copyright © 2012-2016 All Rights Reserved.  前端网(w3cvip.com).保留所有权利    蜀ICP备14031517号-2
+        Copyright © 2019- All Rights Reserved.  （CAO.T.F）.保留所有权利
     </div>
 </div>
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>个人客户列表</title>
+    <title>博客列表</title>
     <link rel="stylesheet" href="/static/plug/layui/css/layui.css">
     <link href="/static/plug/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 </head>
@@ -30,7 +30,7 @@
     </div>
 
     <div class=" layui-inline">
-        <button class="layui-btn layui-btn-normal  ">
+        <button class="layui-btn">
             搜索
         </button>
     </div>
