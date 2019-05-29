@@ -13,13 +13,15 @@
     <div class="layui-form-item">
         <label class="layui-form-label">类型</label>
         <div class="layui-input-block">
-            <input type="radio" name="types" value="1" title="博文"  {{if .post.Types}} checked {{end}}>
-            <input type="radio" name="types" value="0" title="下载"  {{if .post.Types}} {{else}} checked {{end}}>
+            <input type="radio" name="types" value="1" 
+                title="博文"  {{if .post.Types}} {{else}} checked {{end}}>
+            <input type="radio" name="types" value="0" 
+                title="下载"  {{if .post.Types}} checked {{end}}>
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">标题：</label>
+        <label class="layui-form-label">标题</label>
         <div class="layui-input-block">
             <input type="text" name="title" required value="{{.post.Title}}" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
         </div>
@@ -38,9 +40,10 @@
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">加入首页</label>
+        <label class="layui-form-label">是否置顶</label>
         <div class="layui-input-block">
-            <input type="checkbox" name="is_top" {{if .post.IsTop}} checked {{end}} value="1" title="置首" >
+            <input lay-filter="is_top" type="checkbox" name="is_top" {{if .post.IsTop}} checked {{end}} value="1" title="置顶" >
+            <input type="text" name="is_top_value" value="{{.post.IsTop}}" title="置首" >
         </div>
     </div>
 
@@ -51,7 +54,6 @@
         </div>
     </div>
 
-
     <div class="layui-form-item">
         <label class="layui-form-label">标签</label>
         <div class="layui-input-block">
@@ -59,15 +61,12 @@
         </div>
     </div>
 
-
     <div class="layui-form-item">
-        <label class="layui-form-label">标签</label>
+        <label class="layui-form-label">摘要</label>
         <div class="layui-input-block">
             <textarea name="info" placeholder="请输入内容" class="layui-textarea">{{.post.Info}}</textarea>
-
         </div>
     </div>
-
 
     <div class="layui-form-item">
         <label class="layui-form-label">图片</label>
@@ -96,6 +95,7 @@
             </script>
         </div>
     </div>
+
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn" lay-submit lay-filter="formDemo">提交</button>
@@ -104,11 +104,24 @@
     </div>
 </form>
 <script>
-    //Demo
-    layui.use('form', function(){
 
-
+    layui.use(['element', 'layer', 'form'], function () {
+        var $ = layui.jquery;
+        var form = layui.form();
+        form.on('checkbox(is_top)', function(data){
+            if (data.elem.checked){
+                $("input[name=is_top_value]").val(1);
+            }else{
+                $("input[name=is_top_value]").val(0);
+            }
+        });  
     });
+
+    //Demo
+    // layui.use('form', function(){
+
+
+    // });
 
     layui.use('upload', function(){
         layui.upload({

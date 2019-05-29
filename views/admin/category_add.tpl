@@ -9,7 +9,7 @@
 </head>
 <body>
 <script type="text/javascript" src="/static/plug/layui/layui.js"></script>
-<form class="layui-form" action="/admin/categorysave.html" style="margin:20px" method="post">
+<form class="layui-form" action="/admin/categorysave" style="margin:20px" method="post">
     <div class="layui-form-item">
         <label class="layui-form-label">标题：</label>
         <div class="layui-input-block">

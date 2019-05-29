@@ -126,15 +126,19 @@ func (c *AdminController) Main() {
 	c.TplName = c.controllerName + "/main.tpl"
 }
 
-//文章
+// **** 文章管理 ****
+// 
+// 读取所有类目，文章列表
 func (c *AdminController) Article() {
 	categorys := [] *models.Category{}
-	c.o.QueryTable( new(models.Category).TableName()).All(&categorys)
+	c.o.QueryTable(new(models.Category).TableName()).All(&categorys)
 	id, _ := c.GetInt("id")
+	fmt.Println(id)
 	if id != 0{
 		post := models.Post{Id:id}
 		c.o.Read(&post)
 		c.Data["post"] = post
+		// fmt.Println(post)
 	}
 	c.Data["categorys"] = categorys
 	c.TplName = c.controllerName + "/_form.tpl"
@@ -171,7 +175,7 @@ func (c * AdminController) Save()  {
 	post.UserId = 1
 	post.Title = c.Input().Get("title")
 	post.Content = c.Input().Get("content")
-	post.IsTop,_ = c.GetInt8("is_top")
+	post.IsTop,_ = c.GetInt8("is_top_value")
 	post.Types,_ = c.GetInt8("types")
 	post.Tags = c.Input().Get("tags")
 	post.Url = c.Input().Get("url")
@@ -210,8 +214,9 @@ func (c *AdminController) Delete() {
 		}
 	}
 }
-
-//类目
+// **** 类目管理 ****
+// 
+// 读取类目列表
 func (c *AdminController) Category() {
 	categorys := [] *models.Category{}
 	c.o.QueryTable(new(models.Category).TableName()).All(&categorys)
@@ -219,7 +224,8 @@ func (c *AdminController) Category() {
 	c.TplName = c.controllerName + "/category.tpl"
 }
 
-//添加修改类目
+// 类目信息详情
+// 如果页面有id 说名是修改，这时查出id对应信息，返回给页面
 func (c *AdminController) Categoryadd() {
 	id := c.Input().Get("id")
 	if id != "" {
@@ -243,9 +249,9 @@ func (c *AdminController) CategorySave() {
 		category.Created = time.Now()
 		category.Updated = time.Now()
 		if _, err := c.o.Insert(&category); err != nil {
-			c.History("创建分类失败!", "")
+			c.History("创建类目失败!", "")
 		} else {
-			c.History("创建分类成功!", "/admin/category.html")
+			c.History("创建类目成功!", "/admin/category.html")
 		}
 	//	获取得到ID，说明是更新
 	//	注意：更新部分字段需要指定字段
@@ -259,22 +265,22 @@ func (c *AdminController) CategorySave() {
 		category.Id = intId
 		category.Updated = time.Now()
 		if _, err := c.o.Update(&category,"Name","Updated"); err != nil {
-			c.History("更新分类出错", "")
+			c.History("更新类目失败", "")
 		} else {
-			c.History("跟新分类成功", "/admin/category.html")
+			c.History("更新类目成功", "/admin/category.html")
 		}
 	}
 }
-
+// 删除类目
 func (c *AdminController) CategoryDel() {
 	id, err := strconv.Atoi(c.Input().Get("id"));
 	if err != nil {
 		c.History("参数错误", "")
 	}else{
 		if _,err := c.o.Delete(&models.Category{Id:id}); err !=nil{
-			c.History("未能成功删除", "")
+			c.History("删除类目失败", "")
 		}else {
-			c.History("删除成功", "/admin/category.html")
+			c.History("删除类目成功", "/admin/category.html")
 		}
 	}
 }
