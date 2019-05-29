@@ -205,7 +205,9 @@ func (c * AdminController) Save()  {
 			c.History("更新博文成功！", "/admin/index.html")
 		}
 	}
-}// 删除
+}
+
+// 删除博文
 func (c *AdminController) Delete() {
 	id, err := strconv.Atoi(c.Input().Get("id"));
 	if err != nil {
