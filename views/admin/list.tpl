@@ -22,7 +22,7 @@
     </div>
 
     <div class="layui-inline">
-        <label class="layui-form-label">密码</label>
+        <label class="layui-form-label">关键字</label>
         <div class="layui-input-block">
             <input type="text" name="title" placeholder="请输入标题" autocomplete="on" class="layui-input">
         </div>

@@ -44,9 +44,9 @@
 
  7 . 浏览器演示
 
-http://localhost:8099 (前台)
+http://localhost:8088 (前台)
 
-http://localhost:8099/admin/login (后台)
+http://localhost:8088/admin/login (后台)
 
     账号： admin  密码 :123456
 

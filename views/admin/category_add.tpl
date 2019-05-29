@@ -14,7 +14,7 @@
         <label class="layui-form-label">标题：</label>
         <div class="layui-input-block">
             <input name="id" type="hidden" value="{{.cate.Id}}">
-            <input type="text" name="name" value="{{.cate.Name}}" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            <input type="text" name="name" value="{{.cate.Name}}" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
         </div>
     </div>
 

@@ -9,6 +9,7 @@ import (
 	"time"
 )
 
+// 继承beego原有的controller
 type AdminController struct {
 	baseController
 }
@@ -18,6 +19,7 @@ type AdminController struct {
 func (c *AdminController) Config()  {
 	var result []*models.Config
 	c.o.QueryTable(new(models.Config).TableName()).All(&result)
+	// fmt.Println(result)
 	options := make(map[string]string)
 	mp := make(map[string]*models.Config)
 	for _, v := range result {
@@ -212,7 +214,7 @@ func (c *AdminController) Delete() {
 //类目
 func (c *AdminController) Category() {
 	categorys := [] *models.Category{}
-	c.o.QueryTable( new(models.Category).TableName()).All(&categorys)
+	c.o.QueryTable(new(models.Category).TableName()).All(&categorys)
 	c.Data["categorys"] = categorys
 	c.TplName = c.controllerName + "/category.tpl"
 }
@@ -235,22 +237,31 @@ func (c *AdminController) CategorySave() {
 	id := c.Input().Get("id")
 	category := models.Category{}
 	category.Name = name
+	// 从页面获取不到ID，说明是创建
+	// 创建时间和更新时间，都取当前时间
 	if id == "" {
+		category.Created = time.Now()
+		category.Updated = time.Now()
 		if _, err := c.o.Insert(&category); err != nil {
-			c.History("插入数据错误", "")
+			c.History("创建分类失败!", "")
 		} else {
-			c.History("插入数据成功", "/admin/category.html")
+			c.History("创建分类成功!", "/admin/category.html")
 		}
+	//	获取得到ID，说明是更新
+	//	注意：更新部分字段需要指定字段
+	//	比如：这里我更新了分类名，这是更新时间应该也要更新，但是创建时间是不应该更新的
+	//	所以：Update的时候，指定分类名和更新时间两个字段就可以了 c.o.Update(&category,"Name","Updated");
 	} else {
 		intId, err := strconv.Atoi(id);
 		if err != nil {
 			c.History("参数错误", "")
 		}
 		category.Id = intId
-		if _, err := c.o.Update(&category); err != nil {
-			c.History("更新数据出错", "")
+		category.Updated = time.Now()
+		if _, err := c.o.Update(&category,"Name","Updated"); err != nil {
+			c.History("更新分类出错", "")
 		} else {
-			c.History("插入数据成功", "/admin/category.html")
+			c.History("跟新分类成功", "/admin/category.html")
 		}
 	}
 }

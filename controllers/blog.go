@@ -15,9 +15,9 @@ func (c *BlogController) list()  {
 		page       int
 		pagesize   int = 6
 		offset     int
-		list       []*models.Post
+		list       [] *models.Post
 		hosts      [] *models.Post
-		cateId int
+		cate_id    int
 		keyword    string
 	)
 
@@ -36,9 +36,8 @@ func (c *BlogController) list()  {
 	}else{
 		query = query.Filter("types", 1)
 	}
-
-	if cateId, _ = c.GetInt("cate_id"); cateId != 0 {
-		query =  query.Filter("category_id", cateId)
+	if cate_id, _ = c.GetInt("cate_id"); cate_id != 0 {
+		query =  query.Filter("category_id", cate_id)
 	}
 	keyword = c.Input().Get("keyword")
 	if keyword != "" {
