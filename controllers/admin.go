@@ -185,9 +185,6 @@ func (c * AdminController) Save()  {
 	post.Updated = time.Now()
 
 	id ,_ := c.GetInt("id") // 取得URL上的参数，可能是
-	// 处理编辑状态 不更新创建时间
-	// 先获取原创建时间（存到了隐藏的控件里，类型是字符串），将其转化为时间类型
-	create_date := c.Input().Get("create_date")
 
 	if id == 0 {
 		if _, err := c.o.Insert(&post); err != nil {
@@ -197,6 +194,9 @@ func (c * AdminController) Save()  {
 		}
 	}else {
 		post.Id = id
+		// 处理编辑状态 不更新创建时间
+		// 先获取原创建时间（存到了隐藏的控件里，类型是字符串），将其转化为时间类型
+		create_date := c.Input().Get("create_date")
 		localTime, _ := time.ParseInLocation("2006-01-02 15:04:05", create_date[:19], time.Local)
 		post.Created = localTime
 		if _, err := c.o.Update(&post); err != nil {
