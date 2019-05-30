@@ -8,9 +8,12 @@
             </blockquote>
             <div class="blog-main">
                 <div class="blog-main-right">
+                    {{if eq .count 0}}
                     <div class="shadow" style="text-align:center;font-size:16px;padding:40px 15px;background:#fff;margin-bottom:15px;">
-                        未搜索到与【<span style="color: #FF5722;">keywords</span>】有关的文章，随便看看吧！
+                        未搜索到与【<span style="color: #FF5722;">{{.keyword}}</span>】有关的文章，
+                        <i class="fa fa-chevron-circle-right" aria-hidden="true"></i><a href="/article">随便看看</a>吧！
                     </div>
+                    {{end}}
                     {{range .list}}
                     <div class="article shadow">
                         <div class="article-left">
@@ -27,7 +30,7 @@
                         <div class="clear"></div>
                         <div class="article-footer">
                             <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp; {{date .Updated "Y-m-d"}}</span>
-                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;Echosong</span>
+                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;AFU</span>
                             <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">{{.Tags}}</a></span>
                             <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;{{.Views}}</span>
                             <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;0</span>

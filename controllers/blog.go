@@ -41,6 +41,7 @@ func (c *BlogController) list()  {
 	}
 	keyword = c.Input().Get("keyword")
 	if keyword != "" {
+		c.Data["keyword"] = keyword
 		query = query.Filter("title__contains", keyword)
 	}
 	query.OrderBy("-views").Limit(10, 0).All(&hosts)
